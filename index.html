@@ -22,8 +22,8 @@ var canvas = document.getElementById("myCanvas");
     
     
     
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight-32;
+    canvas.width = 1100
+    canvas.height = 576
     var ctx = canvas.getContext("2d");
     
 var ballRadius = 10;
@@ -36,22 +36,22 @@ var mouseY = canvas.height-10
 var buttonSize = canvas.width/13
 
 
-    var button1Color = "red";
-        var button2Color = "red";
-        var button3Color = "red";
-        var button4Color = "red";
-        var button5Color = "red";
-        var button6Color = "red";
-        var button7Color = "red";
-        var button8Color = "red";
-        var button9Color = "red";
-        var button10Color = "red";
-        var button11Color = "red";
-        var button12Color = "red";
-        var playButtonColor = "red";
-        var majorButtonColor = "red";
-        var minorButtonColor = "red";
-        var sevenButtonColor = "red";
+    var button1Color = "black";
+        var button2Color = "black";
+        var button3Color = "black";
+        var button4Color = "black";
+        var button5Color = "black";
+        var button6Color = "black";
+        var button7Color = "black";
+        var button8Color = "black";
+        var button9Color = "black";
+        var button10Color = "black";
+        var button11Color = "black";
+        var button12Color = "black";
+        var playButtonColor = "black";
+        var majorButtonColor = "black";
+        var minorButtonColor = "black";
+        var sevenButtonColor = "black";
     var rootNote = -400 //Change all "#"s in mp3 names to "sharp"s
     var secondNote = -800
     var thirdNote = -1100
@@ -69,6 +69,7 @@ var buttonSize = canvas.width/13
     var buttonDelay = 0
     var leftButtonTextSize = canvas.width/26
     var rightButtonTextSize = canvas.width/26
+    var cellPartGone = "none";
 
     
     
@@ -244,24 +245,7 @@ function mouseMoveHandler(e) {
     }
 }
 
-function resetButtonColors(){
-    button1Color = "red"
-    button2Color = "red"
-    button3Color = "red"
-    button4Color = "red"
-    button5Color = "red"
-    button6Color = "red"
-    button7Color = "red"
-    button8Color = "red"
-    button9Color = "red"
-    button10Color = "red"
-    button11Color = "red"
-    button12Color = "red"
 
-    
-    
-    
-}
     
     function resetChordTypeButtonColors(){
         majorButtonColor = "red"
@@ -273,6 +257,14 @@ function resetButtonColors(){
 
 
 function drawBall() {
+    
+            ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#f8f9fb";
+    ctx.fill();
+    ctx.closePath();  
+    
+    
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "turquoise";
@@ -928,16 +920,179 @@ function buttonResults(){
   };
     
 }
-function drawOrganelles(){
+ function resetButtonColors(){
+    button1Color = "black"
+    button2Color = "black"
+    button3Color = "black"
+    button4Color = "black"
+    button5Color = "black"
+    button6Color = "black"
+    button7Color = "black"
+    button8Color = "black"
+    button9Color = "black"
+    button10Color = "black"
+    button11Color = "black"
+    button12Color = "black"
+
     
+    
+    
+}
+    
+function drawOrganelles(){
+   if(cellPartGone !== "cellMembrane"){
+       
+       ctx.beginPath();
+    ctx.arc(280, canvas.height/2, 210, 0, Math.PI*2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+       
     ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.arc(280, canvas.height/2, 200, 0, Math.PI*2);
+    ctx.fillStyle = "#f8f9fb";
+    ctx.fill();
+    ctx.closePath();
+  }
+    
+  if(cellPartGone !== "cytoplasm"){
+    ctx.beginPath();
+    ctx.arc(280, canvas.height/2, 200, 0, Math.PI*2);
     ctx.fillStyle = "turquoise";
     ctx.fill();
     ctx.closePath();
+  }
+      if(cellPartGone !== "nucleus"){
+    ctx.beginPath();
+    ctx.arc(350, canvas.height/2-70, 60, 0, Math.PI*2);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+          
+        ctx.beginPath();
+    ctx.arc(350, canvas.height/2-70, 55, 0, Math.PI*2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          
+    ctx.beginPath();
+    ctx.arc(350, canvas.height/2-70, 12, 0, Math.PI*2);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+  }
+    if(cellPartGone !== "chromatin"){
+
+        
+    var chromatin = new Image();
+    chromatin.src = 'Chromatin.png'
+    ctx.drawImage(chromatin, 350-55, canvas.height/2-70-55, 110, 110);
+  }
+
+    
+}
+    
+function drawOrganelleNames(){
+    //coordinates 
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(mouseX, 100, 100);
+    
+          ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(mouseY, canvas.width-100, 100);
+    
+    ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button1Color;
+    ctx.fillText("Cytoplasm", canvas.width/2+40, canvas.height/12);
+    
+     if(mouseX >= 594 && mouseX <= 784 && mouseY >= 19 && mouseY <= 49 && button1Color !== "red"){
+       button1Color = "orange"
+
+       }    
+    else if(button1Color == "orange"){
+         button1Color = "black"
+    }
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button2Color;
+    ctx.fillText("Cell Membrane", canvas.width/2+150, canvas.height/12*2);
+    
+         if(mouseX >= 704 && mouseX <= 981 && mouseY >= 69 && mouseY <= 96 && button2Color !== "red"){
+       button2Color = "orange"
+
+       }    
+    else if(button2Color == "orange"){
+         button2Color = "black"
+    }
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button3Color;
+    ctx.fillText("Nucleus", canvas.width/2+40, canvas.height/12*3);
+    
+             if(mouseX >= 594 && mouseX <= 738 && mouseY >= 116 && mouseY <= 143 && button3Color !== "red"){
+       button3Color = "orange"
+
+       }    
+    else if(button3Color == "orange"){
+         button3Color = "black"
+    }
+            ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button4Color;
+    ctx.fillText("Chromatin", canvas.width/2+150, canvas.height/12*4);
+    
+         if(mouseX >= 704 && mouseX <= 890 && mouseY >= 166 && mouseY <= 193 && button4Color !== "red"){
+       button4Color = "orange"
+
+       }    
+    else if(button4Color == "orange"){
+         button4Color = "black"
+    }
+        
     
     
+}
     
+function clickResults(){
+        onclick = function(event) {
+          if(mouseX >= 594 && mouseX <= 784 && mouseY >= 19 && mouseY <= 49 && button1Color !== "red"){   
+        resetButtonColors();
+        button1Color = "red";
+              cellPartGone = "cytoplasm";
+        }
+        else if(mouseX >= 594 && mouseX <= 784 && mouseY >= 19 && mouseY <= 49 && button1Color == "red"){
+            button1Color = "black";
+            cellPartGone = "none";
+        }
+            
+         if(mouseX >= 704 && mouseX <= 981 && mouseY >= 69 && mouseY <= 96 && button2Color !== "red"){   
+        resetButtonColors();
+        button2Color = "red";
+              cellPartGone = "cellMembrane";
+       }
+        else if(mouseX >= 704 && mouseX <= 981 && mouseY >= 69 && mouseY <= 96 && button2Color == "red"){
+            button2Color = "black";
+            cellPartGone = "none";
+        }
+            
+            if(mouseX >= 594 && mouseX <= 738 && mouseY >= 116 && mouseY <= 143 && button3Color !== "red"){   
+        resetButtonColors();
+        button3Color = "red";
+              cellPartGone = "nucleus";   
+       }
+        else if(mouseX >= 594 && mouseX <= 738 && mouseY >= 116 && mouseY <= 143 && button3Color == "red"){
+            button3Color = "black";
+            cellPartGone = "none";
+        }
+            
+        if(mouseX >= 704 && mouseX <= 890 && mouseY >= 166 && mouseY <= 193 && button4Color !== "red"){   
+        resetButtonColors();
+        button4Color = "red";
+              cellPartGone = "chromatin";   
+       }
+        else if(mouseX >= 704 && mouseX <= 890 && mouseY >= 166 && mouseY <= 193 && button4Color == "red"){
+            button4Color = "black";
+            cellPartGone = "none";
+        }
+  } 
 }
 
 
@@ -945,6 +1100,8 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
     drawOrganelles();
+    drawOrganelleNames();
+    clickResults();
     //drawButtons();
     //buttonResults();
     
