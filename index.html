@@ -70,6 +70,7 @@ var buttonSize = canvas.width/13
     var leftButtonTextSize = canvas.width/26
     var rightButtonTextSize = canvas.width/26
     var cellPartGone = "none";
+    var scenario = "no"; 
 
     
     
@@ -988,25 +989,123 @@ function drawOrganelles(){
     chromatin.src = 'Chromatin.png'
     ctx.drawImage(chromatin, 350-55, canvas.height/2-70-55, 110, 110);
   }
+      if(cellPartGone !== "ribosomes"){
+    ctx.beginPath();
+    ctx.arc(280, canvas.height/2, 3, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();//add more and spread them out later
+          
+    ctx.beginPath();
+    ctx.arc(342, 363, 3, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+          
+    ctx.beginPath();
+    ctx.arc(229, 421, 3, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+          
+    
+    ctx.beginPath();
+    ctx.arc(157, 206, 3, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();          
+          
+    ctx.beginPath();
+    ctx.arc(138, 307, 3, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+          
+    ctx.beginPath();
+    ctx.arc(298, 143, 3, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();          
+          
+    ctx.beginPath();
+    ctx.arc(423, 241, 3, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();          
+          
+  }
+        if(cellPartGone !== "er"){
 
+        
+    var er = new Image();
+    er.src = 'er.png'
+    ctx.drawImage(er, 350-20, canvas.height/2-70+46, 95, 80);
+  }
+        
+    if(cellPartGone !== "golgi"){
+ 
+    var golgi = new Image();
+    golgi.src = 'golgi.png'
+    ctx.drawImage(golgi, 350-200, canvas.height/2-70+90, 95, 80);
+  }
+
+    if(cellPartGone !== "cytoskeleton"){
+ 
+    var cytoskeleton = new Image();
+    cytoskeleton.src = 'cytoskeleton.png'
+    ctx.drawImage(cytoskeleton, 280-200, canvas.height/2-200, 400, 400);
+  }    
+    
+        if(cellPartGone !== "centrioles"){
+ 
+    var centrioles = new Image();
+    centrioles.src = 'centrioles.png'
+    ctx.drawImage(centrioles, 350-200, canvas.height/2-70, 75, 75);
+  }
+          if(cellPartGone !== "vacuoles"){
+      
+    ctx.beginPath();
+    ctx.arc(300, canvas.height/2+35, 12, 0, Math.PI*2);
+    ctx.fillStyle = "indigo";
+    ctx.fill();
+    ctx.closePath();
+              
+    ctx.beginPath();
+    ctx.arc(240, canvas.height/2-90, 12, 0, Math.PI*2);
+    ctx.fillStyle = "indigo";
+    ctx.fill();
+    ctx.closePath();
+  }
+    
+    
+        if(cellPartGone !== "mitochondria"){
+ 
+    var mitochondria = new Image();
+    mitochondria.src = 'mitochondria.png'
+    ctx.drawImage(mitochondria, 260, canvas.height/2+75, 85, 85);
+  }    
+    
+                    ctx.font = ""+canvas.width/35+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Choose a cell part to remove. ", canvas.width/2-500, canvas.height/12);
     
 }
     
 function drawOrganelleNames(){
     //coordinates 
-        ctx.font = ""+canvas.width/26+"px Arial";
+   /*     ctx.font = ""+canvas.width/26+"px Arial";
     ctx.fillStyle = "black";
     ctx.fillText(mouseX, 100, 100);
     
           ctx.font = ""+canvas.width/26+"px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText(mouseY, canvas.width-100, 100);
+    ctx.fillText(mouseY, canvas.width-100, 100);*/
     
     ctx.font = ""+canvas.width/26+"px Arial";
     ctx.fillStyle = button1Color;
     ctx.fillText("Cytoplasm", canvas.width/2+40, canvas.height/12);
     
-     if(mouseX >= 594 && mouseX <= 784 && mouseY >= 19 && mouseY <= 49 && button1Color !== "red"){
+     if(mouseX >= 594 && mouseX <= 784 && mouseY >= 19 && mouseY <= 49 && button1Color !== "red" && scenario !== "go"){
        button1Color = "orange"
 
        }    
@@ -1017,7 +1116,7 @@ function drawOrganelleNames(){
     ctx.fillStyle = button2Color;
     ctx.fillText("Cell Membrane", canvas.width/2+150, canvas.height/12*2);
     
-         if(mouseX >= 704 && mouseX <= 981 && mouseY >= 69 && mouseY <= 96 && button2Color !== "red"){
+         if(mouseX >= 704 && mouseX <= 981 && mouseY >= 69 && mouseY <= 96 && button2Color !== "red" && scenario !== "go"){
        button2Color = "orange"
 
        }    
@@ -1047,65 +1146,363 @@ function drawOrganelleNames(){
          button4Color = "black"
     }
         
+    ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button5Color;
+    ctx.fillText("Ribosomes", canvas.width/2+40, canvas.height/12*5);
     
+             if(mouseX >= 594 && mouseX <= 795 && mouseY >= 213 && mouseY <= 240 && button5Color !== "red"){
+       button5Color = "orange"
+
+       }    
+    else if(button5Color == "orange"){
+         button5Color = "black"
+    }
+                ctx.font = ""+canvas.width/30+"px Arial";
+    ctx.fillStyle = button6Color;
+    ctx.fillText("Endoplasmic Reticulum", canvas.width/2+150, canvas.height/12*6);
+    
+         if(mouseX >= 704 && mouseX <= 1089 && mouseY >= 264 && mouseY <= 289 && button6Color !== "red" && scenario !== "go"){
+       button6Color = "orange"
+
+       }    
+    else if(button6Color == "orange"){
+         button6Color = "black"
+    }
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button7Color;
+    ctx.fillText("Golgi Bodies", canvas.width/2+40, canvas.height/12*7);
+    
+             if(mouseX >= 594 && mouseX <= 824 && mouseY >= 310 && mouseY <= 335 && button7Color !== "red"){
+       button7Color = "orange"
+
+       }    
+    else if(button7Color == "orange"){
+         button7Color = "black"
+    }
+     ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button8Color;
+    ctx.fillText("Cytoskeleton", canvas.width/2+150, canvas.height/12*8);
+    
+         if(mouseX >= 704 && mouseX <= 941 && mouseY >= 358 && mouseY <= 385 && button8Color !== "red"){
+       button8Color = "orange"
+
+       }    
+    else if(button8Color == "orange"){
+         button8Color = "black"
+    }    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button9Color;
+    ctx.fillText("Centrioles", canvas.width/2+40, canvas.height/12*9);
+    
+             if(mouseX >= 594 && mouseX <= 775 && mouseY >= 405 && mouseY <= 431 && button9Color !== "red"){
+       button9Color = "orange"
+
+       }    
+    else if(button9Color == "orange"){
+         button9Color = "black"
+    }    
+    
+         ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button10Color;
+    ctx.fillText("Vacuoles", canvas.width/2+150, canvas.height/12*10);
+    
+         if(mouseX >= 700 && mouseX <= 866 && mouseY >= 453 && mouseY <= 479 && button10Color !== "red"){
+       button10Color = "orange"
+
+       }    
+    else if(button10Color == "orange"){
+         button10Color = "black"
+    }  
+    
+            ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button11Color;
+    ctx.fillText("Mitochondria", canvas.width/2+40, canvas.height/12*11);
+    
+             if(mouseX >= 594 && mouseX <= 828 && mouseY >= 501 && mouseY <= 528 && button11Color !== "red" && scenario !== "go"){
+       button11Color = "orange"
+
+       }    
+    else if(button11Color == "orange"){
+         button11Color = "black"
+    }    
+    
+                ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = button12Color;
+    ctx.fillText("Run Scenario", canvas.width/2-390, canvas.height/12*11.4);
+    
+             if(mouseX >= 164 && mouseX <= 409 && mouseY >= 520 && mouseY <= 546 && button12Color !== "red" && scenario !== "go"){
+       button12Color = "orange"
+
+       }    
+    else if(button12Color == "orange"){
+         button12Color = "black"
+    }  
     
 }
     
 function clickResults(){
         onclick = function(event) {
-          if(mouseX >= 594 && mouseX <= 784 && mouseY >= 19 && mouseY <= 49 && button1Color !== "red"){   
+          if(mouseX >= 594 && mouseX <= 784 && mouseY >= 19 && mouseY <= 49 && button1Color !== "red" && scenario !== "go"){   
         resetButtonColors();
         button1Color = "red";
               cellPartGone = "cytoplasm";
         }
-        else if(mouseX >= 594 && mouseX <= 784 && mouseY >= 19 && mouseY <= 49 && button1Color == "red"){
+        else if(mouseX >= 594 && mouseX <= 784 && mouseY >= 19 && mouseY <= 49 && button1Color == "red" && scenario !== "go"){
             button1Color = "black";
             cellPartGone = "none";
         }
             
-         if(mouseX >= 704 && mouseX <= 981 && mouseY >= 69 && mouseY <= 96 && button2Color !== "red"){   
+         if(mouseX >= 704 && mouseX <= 981 && mouseY >= 69 && mouseY <= 96 && button2Color !== "red" && scenario !== "go"){   
         resetButtonColors();
         button2Color = "red";
               cellPartGone = "cellMembrane";
        }
-        else if(mouseX >= 704 && mouseX <= 981 && mouseY >= 69 && mouseY <= 96 && button2Color == "red"){
+        else if(mouseX >= 704 && mouseX <= 981 && mouseY >= 69 && mouseY <= 96 && button2Color == "red" && scenario !== "go"){
             button2Color = "black";
             cellPartGone = "none";
         }
             
-            if(mouseX >= 594 && mouseX <= 738 && mouseY >= 116 && mouseY <= 143 && button3Color !== "red"){   
+            if(mouseX >= 594 && mouseX <= 738 && mouseY >= 116 && mouseY <= 143 && button3Color !== "red" && scenario !== "go"){   
         resetButtonColors();
         button3Color = "red";
               cellPartGone = "nucleus";   
        }
-        else if(mouseX >= 594 && mouseX <= 738 && mouseY >= 116 && mouseY <= 143 && button3Color == "red"){
+        else if(mouseX >= 594 && mouseX <= 738 && mouseY >= 116 && mouseY <= 143 && button3Color == "red" && scenario !== "go"){
             button3Color = "black";
             cellPartGone = "none";
         }
             
-        if(mouseX >= 704 && mouseX <= 890 && mouseY >= 166 && mouseY <= 193 && button4Color !== "red"){   
+        if(mouseX >= 704 && mouseX <= 890 && mouseY >= 166 && mouseY <= 193 && button4Color !== "red" && scenario !== "go"){   
         resetButtonColors();
         button4Color = "red";
               cellPartGone = "chromatin";   
        }
-        else if(mouseX >= 704 && mouseX <= 890 && mouseY >= 166 && mouseY <= 193 && button4Color == "red"){
+        else if(mouseX >= 704 && mouseX <= 890 && mouseY >= 166 && mouseY <= 193 && button4Color == "red" && scenario !== "go"){
             button4Color = "black";
             cellPartGone = "none";
         }
+        if(mouseX >= 594 && mouseX <= 795 && mouseY >= 213 && mouseY <= 240 && button5Color !== "red" && scenario !== "go"){   
+        resetButtonColors();
+        button5Color = "red";
+              cellPartGone = "ribosomes";   
+       }
+        else if(mouseX >= 594 && mouseX <= 795 && mouseY >= 213 && mouseY <= 240 && button5Color == "red" && scenario !== "go"){
+            button5Color = "black";
+            cellPartGone = "none";
+        }
+         if(mouseX >= 704 && mouseX <= 1089 && mouseY >= 264 && mouseY <= 289 && button6Color !== "red" && scenario !== "go"){   
+        resetButtonColors();
+        button6Color = "red";
+              cellPartGone = "er";   
+       }
+        else if(mouseX >= 704 && mouseX <= 1089 && mouseY >= 264 && mouseY <= 289 && button6Color == "red" && scenario !== "go"){
+            button6Color = "black";
+            cellPartGone = "none";
+        }           
+                 if(mouseX >= 594 && mouseX <= 824 && mouseY >= 310 && mouseY <= 335 && button7Color !== "red" && scenario !== "go"){   
+        resetButtonColors();
+        button7Color = "red";
+              cellPartGone = "golgi";   
+       }
+        else if(mouseX >= 594 && mouseX <= 824 && mouseY >= 310 && mouseY <= 335 && button7Color == "red" && scenario !== "go"){
+            button7Color = "black";
+            cellPartGone = "none";
+        }       
+            
+       if(mouseX >= 704 && mouseX <= 941 && mouseY >= 358 && mouseY <= 385 && button8Color !== "red" && scenario !== "go"){   
+        resetButtonColors();
+        button8Color = "red";
+              cellPartGone = "cytoskeleton";   
+       }
+        else if(mouseX >= 704 && mouseX <= 941 && mouseY >= 358 && mouseY <= 385 && button8Color == "red" && scenario !== "go"){
+            button8Color = "black";
+            cellPartGone = "none";
+        }       
+       if(mouseX >= 594 && mouseX <= 775 && mouseY >= 405 && mouseY <= 431 && button9Color !== "red" && scenario !== "go"){   
+        resetButtonColors();
+        button9Color = "red";
+              cellPartGone = "centrioles";   
+       }
+        else if(mouseX >= 594 && mouseX <= 775 && mouseY >= 405 && mouseY <= 431 && button9Color == "red" && scenario !== "go"){
+            button9Color = "black";
+            cellPartGone = "none";
+        }     
+        if(mouseX >= 700 && mouseX <= 866 && mouseY >= 453 && mouseY <= 479 && button10Color !== "red" && scenario !== "go"){   
+        resetButtonColors();
+        button10Color = "red";
+              cellPartGone = "vacuoles";   
+       }
+        else if(mouseX >= 700 && mouseX <= 866 && mouseY >= 453 && mouseY <= 479 && button10Color == "red" && scenario !== "go"){
+            button10Color = "black";
+            cellPartGone = "none";
+        }   
+            
+        if(mouseX >= 594 && mouseX <= 828 && mouseY >= 501 && mouseY <= 528 && button11Color !== "red" && scenario !== "go"){   
+        resetButtonColors();
+        button11Color = "red";
+              cellPartGone = "mitochondria";   
+       }
+        else if(mouseX >= 594 && mouseX <= 828 && mouseY >= 501 && mouseY <= 528 && button11Color == "red" && scenario !== "go"){
+            button11Color = "black";
+            cellPartGone = "none";
+            
+         
+        }  
+               if(mouseX >= 164 && mouseX <= 409 && mouseY >= 520 && mouseY <= 546 && scenario !== "go"){
+               scenario = "go";
+               }
+            
+            if(mouseX >= 968 && mouseX <= 989 && mouseY >= 72 && mouseY <= 98 && scenario == "go"){   
+        scenario = "no"; 
+       }
+       
+            
   } 
 }
-
+function whatHappens(){
+    
+            ctx.beginPath();
+    ctx.rect(591, 65, 404, 464);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath(); 
+    
+    
+        ctx.beginPath();
+    ctx.rect(593, 67, 400, 460);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath(); 
+    
+            ctx.font = ""+canvas.width/24+"px Arial";
+    ctx.fillStyle = "red";
+    ctx.fillText("x", 967, 97);
+    
+    if (cellPartGone == "none"){
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("No cell part has been  ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("removed.", 625, 173);
+        
+        
+    }
+    
+     if (cellPartGone == "cytoplasm"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Without the cytoplasm, the ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("cell cannot hold its structure. ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("It will be dehydrated, ", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("materials will not be able to ", 625, 233); 
+         
+         ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("be transported within the ", 625, 263);
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("cell, and it will die. ", 625, 293);         
+    }   
+    
+    
+         if (cellPartGone == "cellMembrane"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("The cell goes splat, as ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("everything inside the cell is ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("no longer contained by the ", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("cell membrane. ", 625, 233); 
+         
+         ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Then, viruses and ", 625, 263);
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("mysterious substances ", 625, 293);   
+             
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("easily enter the cell and the ", 625, 323);  
+             
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("cell dies again. ", 625, 353);     
+             
+             
+             
+    }   
+    
+             if (cellPartGone == "nucleus"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Since the nucleus tells the ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("rest of the organelles what", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("to do, without it, none of ", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("the organelles can do their ", 625, 233); 
+         
+         ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("function, and the cell ", 625, 263);
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("immediately dies.", 625, 293);   
+             
+ 
+             
+             
+             
+    }   
+}
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBall();
+    //drawBall();
     drawOrganelles();
     drawOrganelleNames();
     clickResults();
+    
     //drawButtons();
     //buttonResults();
     
-
+if(scenario == "go"){
+    whatHappens();
+    
+}
 
      if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
