@@ -72,11 +72,21 @@ var buttonSize = canvas.width/13
     var rightButtonTextSize = canvas.width/26
     var cellPartGone = "none";
     var scenario = "no"; 
+    var time = 0
+    var battery = 100
     
              var skull = new Image();
     skull.src = 'skull.png'
-
-    
+    var junk = new Image();
+    junk.src = 'junk.png'
+    var splat1 = new Image();
+    splat1.src = 'splat1.png'
+    var splat2 = new Image();
+    splat2.src = 'splat2.png'
+    var wavy = new Image();
+    wavy.src = 'wavy.png'
+    var shrivel = new Image();
+    shrivel.src = 'shrivel.png'
     
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);    
@@ -1097,7 +1107,7 @@ function drawOrganelles(){
     
 function drawOrganelleNames(){
     //coordinates 
-   /*     ctx.font = ""+canvas.width/26+"px Arial";
+    /*   ctx.font = ""+canvas.width/26+"px Arial";
     ctx.fillStyle = "black";
     ctx.fillText(mouseX, 100, 100);
     
@@ -1354,10 +1364,12 @@ function clickResults(){
         }  
                if(mouseX >= 164 && mouseX <= 409 && mouseY >= 520 && mouseY <= 546 && scenario !== "go"){
                scenario = "go";
+                   
                }
             
             if(mouseX >= 968 && mouseX <= 989 && mouseY >= 72 && mouseY <= 98 && scenario == "go"){   
         scenario = "no"; 
+                time = 0
        }
        
             
@@ -1419,8 +1431,8 @@ function whatHappens(){
         ctx.font = ""+canvas.width/40+"px Arial";
         ctx.fillStyle = "black";
         ctx.fillText("cell, and it will die. ", 625, 293);    
-         
-
+         //shrivel image here
+ctx.drawImage(shrivel, 280-264, canvas.height/2-225, 524, 454);    
     ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
   
      
@@ -1465,6 +1477,10 @@ function whatHappens(){
         ctx.fillStyle = "black";
         ctx.fillText("cell dies again. ", 625, 353);     
              
+         ctx.drawImage(splat1, 280-264, canvas.height/2-225, 524, 454);    
+             
+             
+             
                  ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
 
              
@@ -1496,10 +1512,21 @@ function whatHappens(){
         ctx.fillStyle = "black";
         ctx.fillText("immediately dies.", 625, 293);   
              
- 
+                 
+           ctx.font = ""+canvas.width/30+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("?", 280, canvas.height/2);       
+                 
+                 
+                 ctx.font = ""+canvas.width/30+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("?", 280-100, canvas.height/2-50); 
+                 time++ 
+                 
+ if(time>=50){
            ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
       
-             
+ }
              
     } 
     
@@ -1651,6 +1678,11 @@ function whatHappens(){
         ctx.fillStyle = "black";
         ctx.fillText("would eventually kill it.", 625, 293);   
 
+                 
+                 ctx.drawImage(junk, 342, 363, 80, 80);           
+          ctx.drawImage(junk, 187, 148, 80, 80);
+                 
+                 
              ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
     
     }  
@@ -1673,9 +1705,18 @@ function whatHappens(){
         ctx.font = ""+canvas.width/40+"px Arial";
         ctx.fillStyle = "black";
         ctx.fillText("eventually explode and die. ", 625, 233);  
-
+                 
+                 time++
+                 if(time <= 50){
+                     ctx.drawImage(wavy, 280-284, canvas.height/2-230, 537, 467);  
+                     
+                 }
+                 if(time >= 50){
+                 ctx.drawImage(splat2, 280-264, canvas.height/2-225, 524, 454);  
+                 }
+                 if(time >= 100){
              ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
-    
+                 }
     }  
     
     
@@ -1720,6 +1761,9 @@ function whatHappens(){
         ctx.font = ""+canvas.width/40+"px Arial";
         ctx.fillStyle = "black";
         ctx.fillText("which could kill the cell. ", 625, 233); 
+                     
+          ctx.drawImage(junk, 342, 363, 80, 80);           
+          ctx.drawImage(junk, 187, 148, 80, 80);            
                  
                  
             ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
@@ -1754,12 +1798,33 @@ function whatHappens(){
         ctx.fillStyle = "black";
         ctx.fillText("starvation.", 625, 323);  
              
-  
+     ctx.beginPath();
+    ctx.rect(280-100, canvas.height/2-50, 200, 100);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();  
                  
+    ctx.beginPath();
+    ctx.rect(280-100-20, canvas.height/2-50+25, 200, 50);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();  
                  
+         ctx.beginPath();
+    ctx.rect(280-battery+10, canvas.height/2-50+10, 200-20+battery-100, 100-20);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();        
+            time++
+     
+            
+            if(battery >= -80){
+               battery-- 
+            }
+                 if(battery <= -80){
             ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
          
-                 
+                 }
                  
              
     }           
@@ -1770,10 +1835,14 @@ function whatHappens(){
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //drawBall();
+   // drawBall();
     drawOrganelles();
     drawOrganelleNames();
     clickResults();
+    
+    if(time <= 0){
+                battery = 100   
+            }
     
     //drawButtons();
     //buttonResults();
