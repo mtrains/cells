@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Cell Organnelle Project</title>
+    <link rel="shortcut icon" href="animalCell.png" type="image/x-icon" />
 
 
     <style>
@@ -71,6 +72,9 @@ var buttonSize = canvas.width/13
     var rightButtonTextSize = canvas.width/26
     var cellPartGone = "none";
     var scenario = "no"; 
+    
+             var skull = new Image();
+    skull.src = 'skull.png'
 
     
     
@@ -1414,7 +1418,16 @@ function whatHappens(){
          
         ctx.font = ""+canvas.width/40+"px Arial";
         ctx.fillStyle = "black";
-        ctx.fillText("cell, and it will die. ", 625, 293);         
+        ctx.fillText("cell, and it will die. ", 625, 293);    
+         
+
+    ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+  
+     
+    
+         
+         
+         
     }   
     
     
@@ -1452,7 +1465,8 @@ function whatHappens(){
         ctx.fillStyle = "black";
         ctx.fillText("cell dies again. ", 625, 353);     
              
-             
+                 ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+
              
     }   
     
@@ -1483,10 +1497,275 @@ function whatHappens(){
         ctx.fillText("immediately dies.", 625, 293);   
              
  
+           ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+      
              
              
+    } 
+    
+             if (cellPartGone == "chromatin"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Without chromatin, the cell ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("cannot transmit genetic ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("material when it reproduces.", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("But that doesn't matter ", 625, 233); 
+         
+         ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("because without the ", 625, 263);
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("instructions from the ", 625, 293);   
+             
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("chromatin, the other ", 625, 323);  
+             
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("organelles won't be able to ", 625, 353);     
+             
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("function and the cell will die.", 625, 383);     
+                 
+                 
+                     ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+
              
     }   
+    
+             if (cellPartGone == "ribosomes"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("The cell is unable to do ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("most of the work it needs ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("to do because the ", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("ribosomes are not there to ", 625, 233); 
+         
+         ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("provide the cell with the ", 625, 263);
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("necessary protein. The cell ", 625, 293);   
+             
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("will be weakened and die.", 625, 323);  
+             
+          
+           ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+      
+    }       
+    
+             if (cellPartGone == "er"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("The cell is unable to do ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("most of the work it needs ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("to do because the ", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("endoplasmic reticulum is not ", 625, 233); 
+         
+         ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("there to provide the cell with ", 625, 263);
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("the necessary protein. The ", 625, 293);   
+             
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("cell will be weakened ", 625, 323);  
+             
+          ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("and die. (see also ribosomes)", 625, 353);  
+                 
+                 
+            ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+         
+                 
+                 
+             
+    }           
+    
+        
+             if (cellPartGone == "golgi"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Without the golgi bodies to ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("break down excess ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("materials from protein ", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("creation, there would be a ", 625, 233); 
+         
+         ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("lot of junk in the cell, which ", 625, 263);
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("would eventually kill it.", 625, 293);   
+
+             ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+    
+    }  
+    
+    
+             if (cellPartGone == "cytoskeleton"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("The cell cannot retain its ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("shape without the ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("cytoskeleton and it will ", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("eventually explode and die. ", 625, 233);  
+
+             ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+    
+    }  
+    
+    
+      if (cellPartGone == "centrioles"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("The cell can probably ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("survive without centrioles. ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("However, without them, it", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("will be difficult for the cell ", 625, 233); 
+         
+         ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("to reproduce.", 625, 263); 
+             
+    }     
+    
+                 if (cellPartGone == "vacuoles"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Without storage capabilities, ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("there will be junk floating ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("around in the cytoplasm ", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("which could kill the cell. ", 625, 233); 
+                 
+                 
+            ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+                 }
+             if (cellPartGone == "mitochondria"){
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("The cell cannot perform ", 625, 143);
+        
+                ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("cellular respiration without ", 625, 173);
+        
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("mitochondria. Food energy  ", 625, 203);         
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("cannot be converted into ", 625, 233); 
+         
+         ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("energy the cell can use, ", 625, 263);
+         
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("and the cell will die of ", 625, 293);   
+             
+        ctx.font = ""+canvas.width/40+"px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("starvation.", 625, 323);  
+             
+  
+                 
+                 
+            ctx.drawImage(skull, 280-100, canvas.height/2-100, 200, 200);
+         
+                 
+                 
+             
+    }           
+                 
+             
+    
 }
 
 function draw() {
